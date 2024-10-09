@@ -1,0 +1,74 @@
+body {
+    min-height: 100vh;
+    background-color: white; /* Default light mode background */
+    color: black; /* Default text color */
+  }
+  
+  body.dark-mode {
+    background-color: #0F172a; /* Dark mode background */
+    color: white; /* Dark mode text color */
+  }
+  
+  #sidebar {
+    width: 260px;
+    font-weight: bold;
+    background: linear-gradient(to right top, #000b67, #0a3468);
+    color: white;
+    transition: 0.3s;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  body.dark-mode #sidebar {
+    background: linear-gradient(to right top, #121212, #1d1d1d); /* Dark mode sidebar background */
+  }
+  
+  #rightside {
+    flex: 1;
+  }
+  
+  .content {
+    height: calc(100% - 54px);
+    background-color: #f8f9fa; /* Light mode background for content */
+  }
+  
+  body.dark-mode .content {
+    background-color: #333 !important; /* Dark mode content background */
+    color: black;
+  }
+  body.dark-mode .content h2 {
+    color: white;
+  }
+  body.dark-mode .content.cards{
+    background-color: #2c3a47;
+  }
+  
+  .hide {
+    left: -100% !important;
+    display: none;
+  }
+  
+  #sidebar .list-group {
+    border-radius: 0 !important;
+  }
+  
+  #sidebar .list-group-item {
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    background-color: #202c9a;
+    color: white;
+  }
+  
+  body.dark-mode #sidebar .list-group-item {
+    background-color: #333; /* Dark mode for sidebar items */
+    color: white;
+  }
+  
+  #sidebar .list-group-item.active {
+    background: #202c9a;
+  }
+  
+  body.dark-mode #sidebar .list-group-item.active {
+    background-color: #555; /* Dark mode active item */
+  }
+  

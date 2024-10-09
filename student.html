@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'qituvchilar sahifasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body onkeyup="searchBtn(event)">
+    <div class="container mt-5">
+        <h1>O'quvchilar jadvali</h1>
+
+        <div>
+            <input type="search" class="form-control" id="searchStudent" placeholder="Search for student">
+            <button class="btn btn-primary mt-2" id="inputValueStudent">Search</button>
+        </div>
+
+        <!-- O'qituvchilar jadvali -->
+        <table class="table table-hover mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Yo'nalish</th>
+                    <th scope="col">Location</th>
+                </tr>
+            </thead>
+            <tbody id="str">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Abdujalilov</td>
+                    <td>Sardor</td>
+                    <td>AI</td>
+                    <td class="btn" onclick="showAddress('Mark Nyu York wall street 15')">Location</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Rashidov</td>
+                    <td>Bobur</td>
+                    <td>Software</td>
+                    <td class="btn" onclick="showAddress('Bobur', 'Toshkent shahar')">Location</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Abdurashidova</td>
+                    <td>Dilnura</td>
+                    <td>English</td>
+                    <td class="btn" onclick="showAddress('Dilnura', 'Chirchiq')">Location</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Manzilni chiqaruvchi JavaScript funksiyasi -->
+    <script>
+        function showAddress(name, address) {
+            alert(name + 'ning manzili: ' + address);
+        }
+
+        const searchStudent = document.getElementById('searchStudent');
+        const inputValueStudent = document.getElementById('inputValueStudent');
+        const rows = document.querySelectorAll("#str tr");
+
+        // Qidiruv funksiyasi
+        function searchTable() {
+            const filter = searchStudent.value.toLowerCase();
+            
+            rows.forEach(row => {
+                // Har bir qatordagi ismlar, familiyalar, yo'nalishlarni olish
+                const lastName = row.children[1].textContent.toLowerCase();
+                const firstName = row.children[2].textContent.toLowerCase();
+                const subject = row.children[3].textContent.toLowerCase();
+
+                // Qidiruv natijasiga mos bo'lsa ko'rsatish, aks holda yashirish
+                if (lastName.includes(filter) || firstName.includes(filter) || subject.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // Enter tugmasini bosganda yoki qidirish tugmasini bosganda qidiruvni ishga tushirish
+        searchStudent.addEventListener('keyup', function (event) {
+            if (event.key === "Enter") {
+                searchTable();
+            }
+        });
+
+        inputValueStudent.onclick = function () {
+            searchTable();
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
+
