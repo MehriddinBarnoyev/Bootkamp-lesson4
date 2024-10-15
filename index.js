@@ -1,12 +1,12 @@
-const loaded = () => console.log("Sahifa yuklandi");
-const btnSide = document.getElementById("btnSide");
+const btnSide2 = document.getElementById("btnSide");
 const sidebar = document.getElementById("sidebar");
 const cards = document.getElementById("cards");
 const modeBtn = document.getElementById("modeBtn");
 const teachers = document.getElementById("teachers");
 const students = document.getElementById("students");
 
-btnSide.onclick = function () {
+
+btnSide2.onclick = function () {
   if (sidebar.classList.contains("hide")) sidebar.classList.remove("hide");
   else sidebar.classList.add("hide");
 };
@@ -36,6 +36,8 @@ modeBtn.onclick = function () {
     modeBtn.classList.remove("fa-sun");
     modeBtn.classList.add("fa-moon");
   }
+  console.log("mode btn");
+  
 };
 
 teachers.onclick = function () {
